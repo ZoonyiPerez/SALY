@@ -8,10 +8,10 @@
         <h2>Iniciar sesión</h2>
         <form class="login-form" method="post" action="../api/login.php">
             <label for="username">Usuario:</label>
-            <input type="text" name="username" required>
+            <input class="input" type="text" name="username" required>
             <label for="password">Contraseña:</label>
-            <input type="password" name="password" required>
-            <input type="submit" value="INICIAR SESIÓN">
+            <input class="input" type="password" name="password" required>
+            <input class="disabled" type="submit" value="INICIAR SESIÓN" disabled>
             <a href="register.php">REGISTRAR</a>
         </form>
     </div>

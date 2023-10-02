@@ -41,7 +41,17 @@
             <li class="nav-item">
                 <a class="nav-link" href=""><span class="nav-text">Joyería</span></a>
             </li>
+            <div class="cart-icon">
+                <img id="cart-img" src="../public/assest/img/bolsa.png" alt="" srcset="">
+                <div id="cart-container" class="cart-container hidden">
+                    <span>Carrito de compras</span>
+                    <div class="cart-items">
+                    </div>
+                    <button class="cart-delete">Vaciar carrito</button>
+                </div>
+            </div>
         </ul>
+
     </nav>
     <?= $this->section('content') ?>
     <?= $this->section('scripts') ?>

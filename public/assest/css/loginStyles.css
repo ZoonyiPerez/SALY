@@ -56,7 +56,9 @@ body {
     color: #feaf05cc;
 }
 
-.login-form input {
+
+
+.login-form .input {
     width: 100%;
     padding: 12px;
     margin-bottom: 20px;
@@ -64,7 +66,7 @@ body {
     border-radius: 5px;
 }
 
-.login-form input[type="submit"],
+.login-form .button,
 .login-form a {
     margin-top: 50px;
     background-color: #f7c559cc;
@@ -86,7 +88,7 @@ body {
     text-align: center;
 }
 
-.login-form input[type="submit"]:hover,
+.login-form .button:hover,
 .login-form a:hover {
     background-color: #c6341a;
 }
@@ -100,4 +102,28 @@ body {
 
 .logo img {
     width: 40%;
+}
+
+.disabled {
+    width: 100%;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 50px;
+    background-color: #470e04;
+    color: #FFF;
+    border: none;
+    border-radius: 5px;
+    padding: 12px 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 16px;
+    color: #FFF;
+    border: none;
+
+}
+
+.error {
+    color: #c6341a;
 }

@@ -8,12 +8,13 @@
         <h2>Iniciar sesión</h2>
         <form class="login-form" method="post" action="../api/register.php">
             <label for="username">Usuario:</label>
-            <input type="text" name="username" required>
+            <input class="input" type="text" name="username" required>
             <label for="password">Contraseña:</label>
-            <input type="password" name="password" required>
+            <input class="input" type="password" name="password" required>
             <label for="password1">Repetir Contraseña:</label>
-            <input type="password" name="password1" required>
-            <input type="submit" value="REGISTRAR">
+            <input class="input" type="password" name="password1" required>
+            <span class="error hidden"></span>
+            <input class="disabled" type="submit" value="REGISTRAR" disabled>
             <a href="index.php">INICIAR SESIÓN</a>
         </form>
     </div>

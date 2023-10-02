@@ -15,6 +15,7 @@
 <body>
 	<?= $this->section('content') ?>
 	<?= $this->insert('scripts') ?>
+	<script src="../public/assest/js/verifyForm.js"></script>
 </body>
 
 </html>
