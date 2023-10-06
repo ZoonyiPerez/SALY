@@ -4,14 +4,13 @@ const cartItems = document.querySelector('.cart-items');
 
 const loadItemsCart = () => {
     let html = '';
-    let items = [];
-    cart.forEach(c => items.push(products.filter(p => p.code == c)[0]));
-    items.forEach(i => html += `
+    cart.forEach(i => html += `
         <div class="cart-item">
             <img src="https://www.yanbal.com/${i.images[0].url}" alt="">
             <span>${i.name}</span>
             <span>${i.price.formattedValue}</span>
             <span class="hidden">${i.code}</span>
+            <input onChange="addAmountProduct('${i.code}')" id="amount-product-${i.code}" type="number" value="${i.amountCart}"/>
             <button onClick="deleteItem('${i.code}')">eliminar</button>
         </div>
     `);
@@ -19,9 +18,19 @@ const loadItemsCart = () => {
 };
 
 const deleteItem = code => {
-    cart = cart.filter(c => c != code);
+    cart = cart.filter(c => c.code != code);
     loadItemsCart();
 }
+
+const addAmountProduct = code => {
+    const value = document.getElementById(`amount-product-${code}`).value;
+    if(value != 0) {
+        cart.filter(c => c.code == code)[0].amountCart = value;
+    } else {
+        alert('Debe ser un número mayor que 0');
+    }
+
+};
 
 cartImg.addEventListener('click', e => {
     if (cartBtn.classList.contains('hidden')) {

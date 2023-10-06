@@ -1,3 +1,5 @@
+const urlParams = new URLSearchParams(window.location.search);
+const q = urlParams.get('q');
 let products = [];
 let cart = [];
 const createCard = (element) => {
@@ -30,9 +32,23 @@ const loadProducts = async (type, page = 0) => {
 };
 
 const addToCart = e => {
-    cart.push(e.target.previousSibling.previousSibling.innerText);
+    let product = products.filter(p => p.code == e.target.previousSibling.previousSibling.innerText)[0];
+    if(!existInCart(product.code)) {
+        cart.push({ ...product, amountCart: 1});
+    } else {
+        alert('El producto ya se encuentra en el carrito');
+    }
     loadItemsCart();
 }
 
-loadProducts('maquillaje');
+const existInCart = (id) => {
+    return cart.filter(p => p.code == id).length > 0;
+}
+
+if (q) {
+    loadProducts(q);
+} else {
+    loadProducts('ofertas');
+}
+
 

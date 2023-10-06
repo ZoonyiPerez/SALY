@@ -24,22 +24,22 @@
         <img class="nav-logo" src="../public/assest/img/logo-yanbal.svg" alt="logo yanbal">
         <ul class="nav-contianer">
             <li class="nav-item">
-                <a class="nav-link" href=""><span class="nav-text">Ofertas</span></a>
+                <a class="nav-link" href="catalog.php?q=ofertas"><span class="nav-text">Ofertas</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href=""><span class="nav-text">Tratamiento facial</span></a>
+                <a class="nav-link" href="catalog.php?q=tratamiento-facial"><span class="nav-text">Tratamiento facial</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href=""><span class="nav-text">Cuidado personal</span></a>
+                <a class="nav-link" href="catalog.php?q=cuidado-personal"><span class="nav-text">Cuidado personal</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href=""><span class="nav-text">Maquillaje</span></a>
+                <a class="nav-link" href="catalog.php?q=maquillaje"><span class="nav-text">Maquillaje</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href=""><span class="nav-text">Perfumes</span></a>
+                <a class="nav-link" href="catalog.php?q=perfumes"><span class="nav-text">Perfumes</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href=""><span class="nav-text">Joyería</span></a>
+                <a class="nav-link" href="catalog.php?q=joyeria"><span class="nav-text">Joyería</span></a>
             </li>
             <div class="cart-icon">
                 <img id="cart-img" src="../public/assest/img/bolsa.png" alt="" srcset="">
