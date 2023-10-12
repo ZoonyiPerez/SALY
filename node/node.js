@@ -20,18 +20,16 @@ const loadProducts = async (type, page = 0) => {
     const data = await response.json();
     let products = data.results;
     products.forEach(e => {
-        connection.query(`INSERT INTO productos(code, nombre, descripcion, precio, imagen) VALUES ('${e.code}','${e.name}','${e.description}','${e.price.value}','${e.images[2].url}')`, (error, results, fields) => {
+        connection.query(`INSERT INTO productos(code, nombre, descripcion, precio, imagen, categoria) VALUES ('${e.code}','${e.name}','${e.description}','${e.price.value}','${e.images[2].url}',1)`, (error, results, fields) => {
             if (error) {
                 console.error('Error al ejecutar la consulta: ' + error.message);
-            } else {
-                console.log('Resultados de la consulta:', results);
             }
         });
     });
     
 };
 
-loadProducts('maquillaje');
-
+loadProducts('ofertas', 1);
+loadProducts('ofertas', 2);
 
 

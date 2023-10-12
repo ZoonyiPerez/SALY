@@ -5,23 +5,59 @@ let cart = [];
 const createCard = (element) => {
     return `
     <div class="card">
-        <img src="https://www.yanbal.com/${element.images[2].url}" alt="" srcset="">
-        <span>${element.name}</span>
-        <span>$ ${element.price.value}</span>
+        <img src="https://www.yanbal.com/medias/${element.imagen}" alt="" srcset="">
+        <span>${element.nombre}</span>
+        <span>$ ${element.precio}</span>
         <span class="hidden">${element.code}</span>
-        <button class="cart-add-btn">AGREGAR A LA BOLSA</button>
+        ${decodedToken.rol != 'usuario' ? `<input onChange="changeAmount('${element.code}')" id="amount-product-${element.code}" type="number" value="${element.stock}"/>` : '<button class="cart-add-btn">AGREGAR A LA BOLSA</button>'}
     </div>`;
 };
 
+const changeAmount = async code => {
+    const value = document.getElementById(`amount-product-${code}`).value;
+    const response = await fetch('../api/products.php', {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({  // El objeto que deseas enviar en la solicitud PATCH
+            code,
+            value
+        })
+    });
+    const data = await response.json();
+    console.log(data);
+
+};
+
 const loadProducts = async (type, page = 0) => {
+    switch (type) {
+        case 'ofertas':
+            type = 1;
+            break;
+        case 'tratamiento-facial':
+            type = 2;
+            break;
+        case 'cuidado-personal':
+            type = 3;
+            break;
+        case 'maquillaje':
+            type = 4;
+            break;
+        case 'perfumes':
+            type = 5;
+            break;
+        case 'joyeria':
+            type = 6;
+            break;
+    }
     const loader = document.getElementById('loader');
     loader.classList.remove('hidden');
     loader.classList.add('flex-center');
     const container = document.getElementById('card-container');
-    const response = await fetch(`https://www.yanbal.com/co/corporate/c/${type}/results/?q=&page=${page}`);
+    const response = await fetch(`../api/products.php?q=${type}`);
     const data = await response.json();
-    products = data.results;
-    console.log(data);
+    products = data;
     products.forEach(element => {
         container.innerHTML += createCard(element);
     });
@@ -33,8 +69,8 @@ const loadProducts = async (type, page = 0) => {
 
 const addToCart = e => {
     let product = products.filter(p => p.code == e.target.previousSibling.previousSibling.innerText)[0];
-    if(!existInCart(product.code)) {
-        cart.push({ ...product, amountCart: 1});
+    if (!existInCart(product.code)) {
+        cart.push({ ...product, amountCart: 1 });
     } else {
         alert('El producto ya se encuentra en el carrito');
     }

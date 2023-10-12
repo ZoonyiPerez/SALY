@@ -6,9 +6,9 @@ const loadItemsCart = () => {
     let html = '';
     cart.forEach(i => html += `
         <div class="cart-item">
-            <img src="https://www.yanbal.com/${i.images[0].url}" alt="">
-            <span>${i.name}</span>
-            <span>${i.price.formattedValue}</span>
+            <img src="https://www.yanbal.com/${i.imagen}" alt="">
+            <span>${i.nombre}</span>
+            <span>${i.precio}</span>
             <span class="hidden">${i.code}</span>
             <input onChange="addAmountProduct('${i.code}')" id="amount-product-${i.code}" type="number" value="${i.amountCart}"/>
             <button onClick="deleteItem('${i.code}')">eliminar</button>
