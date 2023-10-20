@@ -22,10 +22,26 @@ const deleteItem = code => {
     loadItemsCart();
 }
 
-const addAmountProduct = code => {
+const addAmountProduct = async code => {
     const value = document.getElementById(`amount-product-${code}`).value;
-    if(value != 0) {
+    let response = await fetch('../api/product.php?q=' + code);
+    let data = await response.json();
+    if (value != 0 && data[0].stock > value) {
         cart.filter(c => c.code == code)[0].amountCart = value;
+        response = await fetch('../api/products.php', {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({  // El objeto que deseas enviar en la solicitud PATCH
+                code,
+                value: data[0].stock - value
+            })
+        });
+        data = await response.json();
+        console.log(data);
+    } else if (data[0].stock < value) {
+        alert('sin existencias necesarias para su pedido');
     } else {
         alert('Debe ser un número mayor que 0');
     }

@@ -9,7 +9,7 @@
     display: none;
 }
 
-.loader {
+.loader, .container-add-product {
     width: 100%;
     height: 100vh;
     position: absolute;
