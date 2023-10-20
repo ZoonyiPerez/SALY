@@ -14,7 +14,7 @@
     <?= $this->section('styles') ?>
 </head>
 
-<body class='block-scroll'>
+<body>
     <div class="container-add-product hidden">
 
         <form action="" class="form-add-product">
