@@ -37,15 +37,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $category = $jsonData['category'];
 
         $conn = $database->getConnection();
-
+        $image = 'https://picsum.photos/250';
         // Utiliza una consulta preparada para evitar la inyección SQL
-        $stmt = $conn->prepare("INSERT INTO `productos`(`code`, `nombre`, `descripcion`, `precio`, `stock`, `categoria`) VALUES (?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("sssiii", $code, $name, $description, $price, $stock, $category);   
+        $stmt = $conn->prepare("INSERT INTO `productos`(`code`, `nombre`, `descripcion`, `precio`, `stock`, `categoria`,  `imagen`) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("sssiiis", $code, $name, $description, $price, $stock, $category, $image);   
 
         if ($stmt->execute()) {
-            $data = array('message' => 'Actualización exitosa');
+            $data = array('message' => 'creacion exitosa');
         } else {
-            $data = array('message' => 'Error en la actualización');
+            $data = array('message' => 'Error en la creacion');
         }
 
         $stmt->close();

@@ -18,9 +18,11 @@ document.querySelector('.logout').addEventListener('click', e => {
 });
 
 const createCard = (element) => {
+    let urlImg = 'https://www.yanbal.com/medias/' + element.imagen;
+    if(element.imagen.includes('https://picsum.photos/250')) urlImg = 'https://picsum.photos/250';
     return `
     <div class="card">
-        <img src="https://www.yanbal.com/medias/${element.imagen}" alt="" srcset="">
+        <img src="${urlImg}" alt="" srcset="">
         <span>${element.nombre}</span>
         <span>$ ${element.precio}</span>
         <span class="hidden">${element.code}</span>
@@ -177,6 +179,8 @@ const addProduct = async () => {
     });
     let data = await response.json();
     console.log(data);
+    if(data.message == 'creacion exitosa') alert('Producto creado');
+    else alert('Verifique la informacion ingresada');
 };
 
 

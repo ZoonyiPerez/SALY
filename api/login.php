@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if ($row["rol"] == 'usuario')
                 header("Location: ../pages/catalog.php?token=$token");
             if ($row["rol"] == 'admin')
-                header("Location: ../pages/catalog.php?token=$token");
+                header("Location: ../pages/register.php?token=$token");
             if ($row["rol"] == 'cliente')
                 header("Location: ../pages/dashboard.php?token=$token");
             exit();
