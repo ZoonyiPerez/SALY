@@ -17,7 +17,7 @@
 <body>
     <div class="container-add-product hidden">
 
-        <form action="" class="form-add-product">
+        <form action="" class="form-add-product" enctype="multipart/form-data">
             <h2>Crear Producto</h2>
             <label for="code">Codigo:</label>
             <input class="input" id="code" type="text" name="code" required>
@@ -33,6 +33,7 @@
             <select name="category" id="category">
 
             </select>
+            <input type="file" name="archivo" accept="image/*">
             <div class="buttons">
                 <input type="submit" id="crear" value="Crear">
                 <input type="button" id="salir" value="Salir">

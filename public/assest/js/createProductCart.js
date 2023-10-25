@@ -3,6 +3,7 @@ const q = urlParams.get('q');
 let products = [];
 let cart = [];
 let plus = document.querySelector('.add-icon');
+let imgName = '';
 
 if (decodedToken.rol != 'usuario') {
     document.querySelector('.cart-icon img').classList.add('hidden');
@@ -17,9 +18,10 @@ document.querySelector('.logout').addEventListener('click', e => {
     window.location.href = "./index.php";
 });
 
+
 const createCard = (element) => {
     let urlImg = 'https://www.yanbal.com/medias/' + element.imagen;
-    if(element.imagen.includes('https://picsum.photos/250')) urlImg = 'https://picsum.photos/250';
+    if (element.imagen.includes('http://localhost/zoonyi/public/assest/img/products/')) urlImg = element.imagen;
     return `
     <div class="card">
         <img src="${urlImg}" alt="" srcset="">
@@ -157,18 +159,14 @@ document.getElementById('salir').addEventListener('click', e => {
 
 
 const addProduct = async () => {
+    /*
     let code = document.getElementById('code').value;
     let name = document.getElementById('name').value;
     let description = document.getElementById('description').value;
     let price = document.getElementById('price').value;
     let stock = document.getElementById('stock').value;
     let category = document.getElementById('category').value;
-    let response = await fetch('../api/product.php', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({  // El objeto que deseas enviar en la solicitud PATCH
+            body: JSON.stringify({  // El objeto que deseas enviar en la solicitud PATCH
             code,
             name,
             description,
@@ -176,11 +174,17 @@ const addProduct = async () => {
             stock,
             category
         })
+    */
+    let formData = new FormData(document.querySelector('.form-add-product'));
+    let response = await fetch('../api/product.php', {
+        method: 'POST',
+        body: formData,
     });
     let data = await response.json();
     console.log(data);
-    if(data.message == 'creacion exitosa') alert('Producto creado');
+    if (data.message == 'creacion exitosa') alert('Producto creado');
     else alert('Verifique la informacion ingresada');
+
 };
 
 
