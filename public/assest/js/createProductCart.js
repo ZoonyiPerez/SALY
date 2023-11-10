@@ -21,7 +21,7 @@ document.querySelector('.logout').addEventListener('click', e => {
 
 const createCard = (element) => {
     let urlImg = 'https://www.yanbal.com/medias/' + element.imagen;
-    if (element.imagen.includes('http://localhost/zoonyi/public/assest/img/products/')) urlImg = element.imagen;
+    if (element.imagen.includes('http://localhost/tienda/public/assest/img/products/')) urlImg = element.imagen;
     return `
     <div class="card">
         <img src="${urlImg}" alt="" srcset="">

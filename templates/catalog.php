@@ -16,7 +16,6 @@
 
 <body>
     <div class="container-add-product hidden">
-
         <form action="" class="form-add-product" enctype="multipart/form-data">
             <h2>Crear Producto</h2>
             <label for="code">Codigo:</label>
@@ -39,6 +38,16 @@
                 <input type="button" id="salir" value="Salir">
             </div>
         </form>
+    </div>
+    <div id="factura" class="factura-container hidden">
+        <h2>Detalles del pedido:</h2>
+        <div class="factura-items">
+            
+        </div>
+        <div class="factura-total">
+
+        </div>
+        <button class="factura-close" onclick="hiddenFactura()">Cerrar</button>
     </div>
     <div id="loader" class="loader hidden">
         <div class="lds-facebook">
@@ -81,6 +90,7 @@
                     <div class="cart-items">
                     </div>
                     <button class="cart-delete">Vaciar carrito</button>
+                    <button id="pagar" class="cart-delete">Realizar pago</button>
                 </div>
             </div>
             <li>

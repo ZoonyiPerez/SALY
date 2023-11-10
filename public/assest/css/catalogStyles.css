@@ -16,7 +16,8 @@
 }
 
 .card button,
-.cart-container button {
+.cart-container button,
+.factura-close {
     background-color: #feaf05cc;
     padding: 10px 20px;
     border: none;
@@ -108,7 +109,8 @@
 }
 
 .cart-add-btn:hover,
-.cart-container button:hover {
+.cart-container button:hover,
+.factura-close:hover {
     padding: 13px 23px;
     font-size: 15px;
     background-color: #c6341a;
@@ -125,7 +127,7 @@
     cursor: pointer;
 }
 
-.cart-container {
+.cart-container, .factura-container {
     position: absolute;
     top: 17%;
     width: 40%;
@@ -133,6 +135,7 @@
     max-height: 350px;
     overflow-y: scroll;
 }
+
 
 .cart-container>span {
     font-weight: bold;
@@ -154,6 +157,18 @@
     grid-template-columns: 1fr 3fr 1fr 1fr 1fr;
     justify-content: center;
     align-items: center;
+}
+
+.factura-item  {
+    display: grid;
+    grid-template-columns: 1fr 3fr repeat(1fr, 4);
+    justify-content: center;
+    align-items: center;
+}
+
+.factura-items {
+    display: flex;
+    flex-direction: column;
 }
 
 .cart-item img {
@@ -226,3 +241,24 @@ input[type="number"] {
 }
 
 .block-scroll {overflow:hidden;}
+
+.factura-container {
+    padding: 20px;
+    left: 30%;
+    max-height: 100vh;
+    width: 50%;
+    overflow-y: scroll;
+}
+
+.factura-container h2 {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.factura-container button {
+    margin-top: 30px;
+}
+
+.factura-total {
+    padding: 20px;
+}

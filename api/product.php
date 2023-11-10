@@ -69,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stock = $_POST['stock'];
         $category = $_POST['category'];
         $conn = $database->getConnection();
-        $image = 'http://localhost/zoonyi/public/assest/img/products/'.$nombreArchivo;
+        $image = 'http://localhost/tienda/public/assest/img/products/'.$nombreArchivo;
         // Utiliza una consulta preparada para evitar la inyección SQL
         $stmt = $conn->prepare("INSERT INTO `productos`(`code`, `nombre`, `descripcion`, `precio`, `stock`, `categoria`,  `imagen`) VALUES (?, ?, ?, ?, ?, ?, ?)");
         $stmt->bind_param("sssiiis", $code, $name, $description, $price, $stock, $category, $image);

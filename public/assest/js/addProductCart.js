@@ -56,4 +56,43 @@ cartImg.addEventListener('click', e => {
     else cartBtn.classList.add('hidden');
 });
 
+const pagar = document.getElementById('pagar');
+const factura = document.getElementById('factura');
 
+const showFactura = () => {
+    factura.classList.remove('hidden');
+    factura.classList.add('flex-center');
+};
+
+const hiddenFactura = () => {
+    factura.classList.add('hidden');
+    factura.classList.remove('flex-center');
+};
+
+pagar.addEventListener('click', e => {
+    if (cart.length > 0) {
+        if(!cartBtn.classList.contains('hidden')) cartBtn.classList.add('hidden');
+        let html = '';
+        let total = 0;
+        cart.forEach(i => {
+            total += i.precio * i.amountCart;
+            html += `
+            <div class="cart-item">
+                <img src="https://www.yanbal.com/${i.imagen}" alt="">
+                <span>${i.nombre}</span>
+                <span>Precio unitario: $ ${i.precio}</span>
+                <span>Cantidad: ${i.amountCart}</span>
+                <span>Precio total: $ ${i.precio * i.amountCart}</span>
+            </div>
+            `
+        });
+
+        showFactura();
+        document.querySelector('.factura-items').innerHTML = html;
+        document.querySelector('.factura-total').innerHTML = `
+            <span>Total del pedido: $ ${total}</span>
+        `;
+        cart = [];
+        loadItemsCart();
+    } else alert('Carrito vacio');
+});
